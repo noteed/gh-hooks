@@ -63,7 +63,7 @@ payload dbUrl secret = do
             liftIO $ do
               con <- connectPostgreSQL dbUrl
               _ <- execute_ con "SET application_name='gh-hooks'"
-              let q = Q.Queue "gh-hooks"
+              let q = Q.Queue "ghhooks"
               Q.enqueue con q "push" body'
               close con
             writeText "Payload accepted.\n"
