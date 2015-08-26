@@ -4,13 +4,13 @@
 module Main (main) where
 
 import Control.Lens (makeLenses)
+import Control.Monad.Trans (liftIO)
 import Data.Aeson (decode, Value)
 import qualified Data.ByteString.Lazy.Char8 as L
 import qualified Data.ByteString.Char8 as B
 import Data.Digest.Pure.SHA (hmacSha1, showDigest)
 import qualified Database.PostgreSQL.Queue as Q
 import Database.PostgreSQL.Simple (connectPostgreSQL, execute_, close)
-import Snap (liftIO)
 import Snap.Core
   ( getHeader, getsRequest, ifTop, method, modifyResponse
   , readRequestBody, setContentType, setResponseStatus
